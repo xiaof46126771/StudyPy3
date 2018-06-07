@@ -26,7 +26,7 @@ if os.path.isfile(s):
         print(f.read())
 else:
     with open(s, 'x') as tt:
-        tt.write(time.strftime("%y-%m-%d %H:%M:%S"))
+        tt.write(time.strftime("%y-%m-%d %H:%M:%S\n"))
     with open(s, 'r') as tt:
         print(tt.read())
     print('file is not exists , create it OK !')
@@ -70,10 +70,12 @@ while cnt <= total:
         if result <= sum:
             with open(s, 'a') as ad:
                 ad.writelines('{0} + {1} =  \n'.format(a, b))
-            print('{0} + {1} = '.format(a, b))
+            print('{0} + {1} = {2}'.format(a, b, result))
             cnt += 1
     elif opertype == 2:
         result = a - b
-        if result >= sum:
-            print('{0} - {1} = '.format(a, b))
+        if (result >= 0) and (result <= sum):
+            with open(s, 'a') as sub:
+                sub.writelines('{0} - {1} = \n'.format(a, b))
+            print('{0} - {1} = {2}'.format(a, b, result))
             cnt += 1
